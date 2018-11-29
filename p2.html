@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        /*改变旋转方块的位置*/
+       div.pos  
+       {
+           position: absolute;
+           left: 700px;
+           top: 300px;
+       }
+       /*旋转方块的定义*/
+       div
+       {
+           width: 100px;
+           height: 100px;
+           background-color: yellow;
+           border: 1px solid black;
+           transition: width 2s, height 2s, transform 2s, background-color 2s; 
+       }
+       /*鼠标移到旋转方块上去时*/
+       div:hover
+       {
+           width: 150px;
+           height: 150px;
+           background-color: #66ccff; /*天依蓝赛高*/
+           transform: rotate(360deg);
+       }
+       /*改变那一坨文字的位置*/
+       div2.poss
+       {
+           position: absolute;
+           left: 200px;
+           top: 100px;
+       }
+
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>咸鱼RX的咸鱼html</title>
+
+    <!--实现按按钮改变文字内容-->
+    <script>
+        function change()
+        {
+            x=document.getElementById("233");
+            if(x.innerHTML.match("这句话的内容将被改变"))
+            {
+                x.innerHTML="这是改变后的内容";
+            }
+            else
+            {
+                x.innerHTML="这句话的内容将被改变";
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <h3 style="color:orchid">Button1 弹出个小框框</h3>
+    <h3 style="color:purple">Button2 会改变下面这句话：</h3>
+
+    <!--用poss改变这一坨的绝对位置-->
+    <div2 class="poss">
+    <h1 id="233" style="color:red">这句话的内容将被改变</h1>
+    </div2>
+    <button type="button" onclick="change()">Button2</button>
+
+    <!--用pos改变这一坨的位置，绝对位置-->
+    <div class="pos">
+        <br>
+        <br>
+       <button type="button" onclick="alert('Hello world!')">Button1</button>
+    </div>
+  
+</body>
+</html>
