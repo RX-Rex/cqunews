@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rx's Vue test</title>
+
+  <!-- 外链js引入 -->
+  <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+  <script src="JavaScript.js"></script>
+
+  <!-- 外链css引入 -->
+  <link href="Css.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+  <img alt="必应每日一图" id="BG" src="https://bing.ioliu.cn/v1?d=0" height=100% width=100%> 
+
+  <!-- 搜索框div -->
+  <div id="searchbox" class="pos">
+    <!-- v-model传递文本 @keyup传递回车 -->
+    <input type="text" id="inputtext" placeholder="请输入搜索内容" v-model="message" @keyup='show($event)'>
+    <!-- 通过点击搜索按钮实现搜索,为毛不能用onclick调用方法。。。用@click才行 -->
+    <button type="button" @click="Click()">搜索</button>
+    <br>
+    <br>
+    <button onclick="javacript:change(1)">后一天</button>
+    <button onclick="javacript:change(2)">前一天</button>
+  </div>
+
+  <!-- 度娘图片div -->
+  <div class="pos2">
+      <img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike180%2C5%2C5%2C180%2C60/sign=6b007d059e0a304e462fa8a8b0a1cce3/50da81cb39dbb6fdc479ec270024ab18972b3794.jpg" alt="百度logo" height="150" width="150">
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rx's Vue test</title>
+
+  <!-- 外链引入vue -->
+  <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+</head>
+
+<body>
+  <img alt="必应每日一图" id="BG" src="https://bing.ioliu.cn/v1?d=0" height=100% width=100%> 
+
+  <!-- 搜索框div -->
+  <div id="searchbox" class="pos">
+    <!-- v-model传递文本 @keyup传递回车 -->
+    <input type="text" id="inputtext" placeholder="请输入搜索内容" v-model="message" @keyup='show($event)'>
+    <!-- 通过点击搜索按钮实现搜索,为毛不能用onclick调用方法。。。用@click才行 -->
+    <button type="button" @click="Click()">搜索</button>
+    <br>
+    <br>
+    <button onclick="javacript:change(1)">后一天</button>
+    <button onclick="javacript:change(2)">前一天</button>
+  </div>
+
+  <!-- 度娘图片div -->
+  <div class="pos2">
+      <img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike180%2C5%2C5%2C180%2C60/sign=6b007d059e0a304e462fa8a8b0a1cce3/50da81cb39dbb6fdc479ec270024ab18972b3794.jpg" alt="百度logo" height="150" width="150">
+  </div>
+
+</body>
+
+<style>
+  /*搜索框位置*/
+  div.pos
+  {
+    position: absolute;
+    left: 700px;
+    top: 100px;
+  }
+
+  /*度娘位置*/
+  div.pos2
+  {
+    position: absolute;
+    left: 1370px;
+    top: 570px;
+  }
+
+  /*美化输入框*/
+  input
+  {
+    border: 1px solid #ccc;
+    padding: 7px 0px;
+    width: 233px;
+  }
+  input:focus 
+  {
+     outline: none;
+     border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+  }
+
+</style>
+
+<!-- 主体js -->
+<script>
+  //更改当前每日一图壁纸
+  var bgi=0;
+  function change(flag)
+  {
+   // alert("233");
+    if(flag==1&&!(bgi==0))
+    {
+      bgi=bgi-1;
+    }
+    if(flag==2)
+    {
+      bgi=bgi+1;
+    }  
+    var url="https://bing.ioliu.cn/v1?d=";
+    var pic=document.getElementById("BG");
+    pic.src=url+bgi;
+  }
+
+//脚本语言后置加 window.onload 双重保险保证页面加载完再执行js...
+  window.onload = function()
+  {
+    new Vue({
+      el: '#searchbox',
+      data:
+      {
+        message: ''
+      },
+      methods: 
+      {
+        show: function(inf)
+        {
+          //这里困扰了我几天。。。
+          //keyCode原来C必须大写。。。
+          if(inf.keyCode==13)
+          {
+            window.open('https://www.baidu.com/s?wd=' + this.message, '_blank');
+            this.message='';
+          }
+        },
+        
+        Click: function() 
+        {
+          //这里获取输入框的文本要加.value才行。。。
+          var text=document.getElementById("inputtext").value;
+          window.open('https://www.baidu.com/s?wd=' + text, '_blank');
+        }
+      }
+    })
+  }
+</script>
+
+</html>

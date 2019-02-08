@@ -1,0 +1,29 @@
+/*搜索框位置*/
+  div.pos
+  {
+    position: absolute;
+    left: 700px;
+    top: 100px;
+  }
+
+  /*度娘位置*/
+  div.pos2
+  {
+    position: absolute;
+    left: 1370px;
+    top: 570px;
+  }
+
+  /*美化输入框*/
+  input
+  {
+    border: 1px solid #ccc;
+    padding: 7px 0px;
+    width: 233px;
+  }
+  input:focus 
+  {
+     outline: none;
+     border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+  }
